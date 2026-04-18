@@ -123,7 +123,7 @@ data <- data %>%
     TRUE ~ as.character(Age_Group)
   ))
 
-cat("✅ Age_Group labels cleaned successfully\n")
+cat("Age_Group labels cleaned successfully\n")
 print(unique(data$Age_Group))   
 
 
