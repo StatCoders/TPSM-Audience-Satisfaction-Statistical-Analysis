@@ -80,3 +80,4 @@ cat("3. One-proportion test p-value           : ",
 cat("4. ANOVA p-value                         : ", 
     ifelse(summary(anova_result)[[1]][["Pr(>F)"]][1] < 0.001, "< 0.001", 
            round(summary(anova_result)[[1]][["Pr(>F)"]][1], 4)), "\n")
+
