@@ -26,18 +26,24 @@ print("QUOTA vs OBSERVED COUNTS")
 print(comparison)
 
 
-#Visualise Quota vs Observed
-barplot_data <- rbind(quota_table$Quota_Count, comparison$Observed_Count)
+# Ensure Observed_Count is in exactly the same order as quota_table
+observed_ordered <- comparison$Observed_Count[match(quota_table$Age_Group, comparison$Age_Group)]
+
+# Create matrix for barplot
+barplot_data <- rbind(quota_table$Quota_Count, observed_ordered)
 rownames(barplot_data) <- c("Quota", "Observed")
 colnames(barplot_data) <- quota_table$Age_Group
 
-barplot(barplot_data, beside = TRUE, 
+# Plot
+barplot(barplot_data, beside = TRUE,
         main = "Quota vs Observed Sample by Age Group",
         ylab = "Number of Respondents",
         col = c("skyblue", "orange"),
         legend = rownames(barplot_data),
         args.legend = list(x = "topright"))
-mtext("Proportionate Quota Sampling (Sri Lanka 2025 mid-year estimates)", side = 3, line = 0.5)
+
+mtext("Proportionate Quota Sampling (Sri Lanka 2025 mid-year estimates)", 
+      side = 3, line = 0.5)
 
 
 #Overall Descriptive Statistics for Satisfaction_Score
